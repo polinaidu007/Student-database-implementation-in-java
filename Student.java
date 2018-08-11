@@ -77,7 +77,10 @@ public class Student implements Comparable {
 
 	@Override
 	public boolean equals(Object obj) {
-		return super.equals(obj);
+		if(this.id == ((Student)obj).id)
+			return true;
+		else	
+			return false;
 	}
 	
 	
@@ -87,6 +90,12 @@ public class Student implements Comparable {
 	@Override
 	public int compareTo(Object o) {
 		Student other = (Student) o;
-		return (this.fullName.compareTo(other.fullName));
+		Integer x = (Integer)this.id;
+		Integer y = (Integer)other.id;
+		return (x-y);
+	}
+	public String toString()
+	{
+		return ""+this.getId()+" "+this.getFullName()+" "+this.getBirthDate()+" "+this.getAvgMark();
 	}
 }
