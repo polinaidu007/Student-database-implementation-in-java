@@ -28,7 +28,9 @@ class StudentOperationImplementation implements StudentArrayOperation
         if(student == null)
             throw new IllegalArgumentException("Null object");
         else
+        {
             this.array[index] = student;
+        }
     }
 
     public void addFirst(Student student)
@@ -131,6 +133,39 @@ class StudentOperationImplementation implements StudentArrayOperation
             }
         }
     }
+    public Student[] getByBirthDate(Date date)
+    {
+        if(date == null)
+            throw new IllegalArgumentException("Invalid Date");
+        else
+        {
+            int j=0;
+            Student [] ans = new Student[this.array.length];
+            for(int i=0;i<this.array.length;i++)
+            {
+                if(this.array[i].getBirthDate() == date)
+                    ans[j++]=this.array[i];
+            }
+            return ans;
+        }
+    }
+    public Student[] getBetweenDates(Date fd,Date ld)
+    {
+        if(fd==null || ld == null)
+            throw new IllegalArgumentException("Invalid date");
+        else
+        {
+            int j=0;
+            Student [] ans = new Student[this.array.length];
+            for(int i=0;i<this.array.length;i++)
+            {
+                if(ld.compareTo(this.array[i].getBirthDate()) * this.array[i].getBirthDate().compareTo(fd) >0 )
+                    ans[j++]=this.array[i];
+            }
+            return ans;
+        }
+    }
+    
 
 
     
